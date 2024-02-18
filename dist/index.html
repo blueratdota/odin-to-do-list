@@ -13,11 +13,11 @@
     <div class="body">
         <nav class="side-bar">
             <div id="all">
-                <p>All</p>
+                <p>All</p> <!--display literally all-->
             </div>
             <div id="date-sorted">
-                <p class="Today">Today</p>
-                <p class="Week">Week</p>
+                <p class="Today">Today</p> <!-- for display only -->
+                <p class="Week">Week</p> <!-- for display only -->
             </div>
             <div id="projects">
                 <p>Projects</p>
@@ -34,7 +34,7 @@
         </nav>
         <main>
             <div class="content">
-                <div class="entry">
+                <!-- <div class="entry">
                     <div class="priority-container">
                         <div class="priority"></div>
                     </div>
@@ -75,15 +75,57 @@
                         <p class="edit">Edit</p>
                         <p class="delete">Delete</p>
                     </div>
-                </div>
+                </div> -->
                 
             </div>
             <div class="recent">recently done stuff</div>
             <div class="bottom">
+                <H2 id="curret-page">display here current page</H2>
                 <img id="add-entry" src="../src/plus-circle-outline.svg" alt="">
             </div>
         </main>
     </div>
+    <div class="add-modal">
+        <form class="add-form" action="" onsubmit="return false">
+            <div class="modal-header">
+                <h2>Create New: <span id="modal-current-page"></span></h2>
+                <img id="close-modal" src="../src/close-circle-outline.svg" alt="">
+            </div>
+            <div class="type-area">
+                <input class="input" type="text" id="title" placeholder="Title: Clean my wardrobe" required="" maxlength="50">
+                <textarea name="details" id="details"  cols="30" rows="10" placeholder="Details: fold shirts, iron uniform" required="" maxlength="400"></textarea>
+                <div class="date-input-div">
+                    <p>Due Date: </p>
+                    <input class="input-date" type="date" id="date" required="">
+                </div>
+                <div class="modal-bottom">
+                    <div class="input-priority">
+                        <p>Priority:  </p>
+                        <div class="priority-options">
+                            <input type="radio" id="low-priority-radio" class="input-radio" name="priority-radio" value="low" required="">
+                            <label for="low-priority-radio" class="low-priority">LOW</label>
+                            <input type="radio" id="med-priority-radio" class="input-radio" name="priority-radio" value="medium">
+                            <label for="med-priority-radio" class="med-priority">MEDIUM</label>
+                            <input type="radio" id="hi-priority-radio" class="input-radio" name="priority-radio" value="high">
+                            <label for="hi-priority-radio" class="hi-priority">HIGH</label>
+                        </div>
+                        <!-- <div class="priority-options" required="">
+                            <div id="low-priority">LOW</div>
+                            <div id="med-priority">MEDIUM</div>
+                            <div id="hi-priority">HIGH</div>
+                            <input type="radio">
+                            <input type="radio">
+                        </div> -->
 
+
+                    </div>
+                    <button id="finalize-entry" type="submit">ADD ENTRY</button>
+                </div>
+            </div>   
+        </form>
+    </div>
+    <div class="overlay"></div>
 </body>
+    
+
 </html>
