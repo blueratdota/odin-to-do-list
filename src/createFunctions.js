@@ -16,12 +16,13 @@ function thisLogs(){
 const entryReference = []
 
 class toDoEntry{
-    constructor(title,details,dueDate,priority){
+    constructor(title,details,dueDate,priority,inProject){
         this.title = title
         this.details = details
         this.dueDate = dueDate
         this.priority = priority
         this.displayStatus
+        this.inProject = inProject
         this.project
     }
 }
@@ -93,13 +94,31 @@ class entryFolder{
         createButtons.classList.add('buttons')
         const date = document.createElement('p')
         date.classList.add('date')
-        date.textContent = format(data.dueDate, "MM/dd/yyyy") //output
+        date.textContent = format(new Date(data.dueDate), "MM/dd/yyyy") //output
         const editBtn = document.createElement('img')
         editBtn.classList.add('svg-icon','edit')
         editBtn.src = editIcon
         const deleteBtn = document.createElement('img')
         deleteBtn.classList.add('svg-icon','delete')
         deleteBtn.src = deleteIcon
+
+        const _folderData = this.folderContent
+        const refreshContent = this.loopThroughData
+
+        //button function
+        deleteBtn.addEventListener('click',function(){
+            // console.log(_folderData);
+            // console.log(_folderData.indexOf(data));
+            // console.log(JSON.parse(localStorage.getItem('toDoEntry')))
+            // console.log(JSON.parse(localStorage.getItem('toDoEntry')).indexOf(data));
+            content.removeChild(createEntryDiv)
+            _folderData.splice(_folderData.indexOf(data),1)
+            localStorage.setItem('toDoEntry',JSON.stringify(_folderData))
+            refreshContent(_folderData)
+
+            console.log(_folderData);
+
+        })
 
         //testing functionallity
         editBtn.addEventListener('click',function(e){
