@@ -33,55 +33,11 @@
             </div>
         </nav>
         <main>
-            <div class="content">
-                <!-- <div class="entry">
-                    <div class="priority-container">
-                        <div class="priority"></div>
-                    </div>
-                    <div class="text-container">
-                        <input name="done" class="done-status" type="checkbox">
-                        <p class="text">this is sample to-do entry</p>
-                    </div>
-                    <div class="buttons">
-                        <p class="date">current date</p>
-                        <p class="edit">Edit</p>
-                        <p class="delete">Delete</p>
-                    </div>
-                </div>
-                <div class="entry">
-                    <div class="priority-container">
-                        <div class="priority"></div>
-                    </div>
-                    <div class="text-container">
-                        <input name="done" class="done-status" type="checkbox">
-                        <p class="text">this is sample to-do entry</p>
-                    </div>
-                    <div class="buttons">
-                        <p class="date">current date</p>
-                        <p class="edit">Edit</p>
-                        <p class="delete">Delete</p>
-                    </div>
-                </div>
-                <div class="entry">
-                    <div class="priority-container">
-                        <div class="priority"></div>
-                    </div>
-                    <div class="text-container">
-                        <input name="done" class="done-status" type="checkbox">
-                        <p class="text">this is sample to-do entry</p>
-                    </div>
-                    <div class="buttons">
-                        <p class="date">current date</p>
-                        <p class="edit">Edit</p>
-                        <p class="delete">Delete</p>
-                    </div>
-                </div> -->
-                
-            </div>
+            <div class="content"></div>
             <div class="recent">recently done stuff</div>
             <div class="bottom">
                 <H2 id="curret-page">display here current page</H2>
-                <img id="add-entry" src="../src/plus-circle-outline.svg" alt="">
+                <img id="add-entry" src="./plus-circle-outline.svg" alt="">
             </div>
         </main>
     </div>
@@ -89,7 +45,7 @@
         <form class="add-form" action="" onsubmit="return false">
             <div class="modal-header">
                 <h2>Create New: <span id="modal-current-page"></span></h2>
-                <img id="close-modal" src="../src/close-circle-outline.svg" alt="">
+                <img id="close-modal" src="./close-circle-outline.svg" alt="">
             </div>
             <div class="type-area">
                 <input class="input" type="text" id="title" placeholder="Title: Clean my wardrobe" required="" maxlength="50">
@@ -109,20 +65,43 @@
                             <input type="radio" id="hi-priority-radio" class="input-radio" name="priority-radio" value="high">
                             <label for="hi-priority-radio" class="hi-priority">HIGH</label>
                         </div>
-                        <!-- <div class="priority-options" required="">
-                            <div id="low-priority">LOW</div>
-                            <div id="med-priority">MEDIUM</div>
-                            <div id="hi-priority">HIGH</div>
-                            <input type="radio">
-                            <input type="radio">
-                        </div> -->
-
-
                     </div>
                     <button id="finalize-entry" type="button">ADD ENTRY</button>
                 </div>
             </div>   
         </form>
+    </div>
+    <div class="edit-modal hidden">
+        <form class="edit-form" action="" onsubmit="return false">
+            <div class="edit-modal-header">
+                <h2>Edit Entry: <span id="modal-current-entry"></span></h2>
+                <img id="close-edit-modal" src="./close-circle-outline.svg" alt="">
+            </div>
+            <div class="type-area">
+                <input class="input" type="text" id="edit-title" placeholder="Title: Clean my wardrobe" required="" maxlength="50">
+                <textarea name="details" id="edit-details"  cols="30" rows="10" placeholder="Details: fold shirts, iron uniform" required="" maxlength="400"></textarea>
+                <div class="date-input-div">
+                    <p>Due Date: </p>
+                    <input class="input-date" type="date" id="edit-date" required="">
+                </div>
+                <div class="modal-bottom">
+                    <div class="input-priority">
+                        <p>Priority:  </p>
+                        <div class="priority-options">
+                            <input type="radio" id="low-priority-radio" class="edit-input-radio" name="priority-radio" value="low" required="">
+                            <label for="low-priority-radio" class="low-priority">LOW</label>
+                            <input type="radio" id="med-priority-radio" class="edit-input-radio" name="priority-radio" value="medium">
+                            <label for="med-priority-radio" class="med-priority">MEDIUM</label>
+                            <input type="radio" id="hi-priority-radio" class="edit-input-radio" name="priority-radio" value="high">
+                            <label for="hi-priority-radio" class="hi-priority">HIGH</label>
+                        </div>
+                    </div>
+                    <button id="save-edit" type="button">SAVE EDIT</button>
+                </div>
+            </div>   
+        </form>
+    </div>
+
     </div>
     <div class="overlay hidden"></div>
 </body>

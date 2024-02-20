@@ -27,6 +27,9 @@ const titleModal = document.querySelector("#title")
 const detailsModal = document.querySelector("#details")
 const dateModal = document.querySelector("#date")
 
+//EDIT MODAL
+const closeEditModal = document.querySelector("#close-edit-modal")
+
 
 // ADDING STUFF
 const addEntry = document.querySelector("#add-entry")
@@ -98,16 +101,10 @@ addEntry.addEventListener('click',function(){
     addModal.classList.remove("hidden")
 })
 closeModal.addEventListener('click',function(){
-    overlay.classList.add("hidden")
-    addModal.classList.add("hidden")
+    clrclsModal()
 })
+
 function clrclsModal(){
-    // titleModal.value
-    // detailsModal.value
-    // dateModal.value
-    // for(let i=0; i<3; i++){
-    //     inputRadio[i].checked = false
-    // }  
     document.querySelector(".add-form").reset() 
     overlay.classList.add("hidden")
     addModal.classList.add("hidden")
@@ -118,9 +115,6 @@ finalizeEntry.addEventListener('click',function(){
     const _details = detailsModal.value
     // const _date = dateModal.value.split("-")
     const _date = dateModal.value
-    // console.log(inputRadio[0]);
-    // console.log(inputRadio[1]);
-    // console.log(inputRadio[2]);
     const _radio = (function(){
         for(let i=0; i<3; i++){
             if(inputRadio[i].checked){
@@ -130,41 +124,32 @@ finalizeEntry.addEventListener('click',function(){
     })()
     const inProject = !modalCurrentPage.textContent=="All"
     const newEntry = new toDoEntry(_title,_details,_date,_radio,inProject)
-    //adds the created entry in the modal to the folder
-    generateContent.theFolder.addEntry(newEntry)
-    //runs the loop through folder function and generate things in the content
-    generateContent.theFolder.loopThroughData(generateContent.theFolder.folderContent)
-    //after adding it to the folder, it adds it to the local storage
-    addToLocalStorage()
-    //clears the modal
-    clrclsModal()
-    console.log(generateContent.theFolder.folderContent);
+    if(_title!="" && _date!="" && _radio!=undefined ){
+        //adds the created entry in the modal to the folder
+        generateContent.theFolder.addEntry(newEntry)
+        //runs the loop through folder function and generate things in the content
+        generateContent.theFolder.loopThroughData(generateContent.theFolder.folderContent)
+        //after adding it to the folder, it adds it to the local storage
+        addToLocalStorage()
+        //clears the modal
+        clrclsModal()
+        console.log(generateContent.theFolder.folderContent);
+        //function that clears entrey fields
+        //add execute only if all fields have entry
+    }
+    else{
+        console.log('cannot finalize');
+    }
 
-    //function that clears entrey fields
-    //add execute only if all fields have entry
+
 })
+
+//create a function for save edit
+//removes the entry from the folder and the local data
+//if close is pressed, saves the original data. if save-edit, adds the edited data
 
 navAll.addEventListener("click",function(){//FOR TESING PURPOSES ONLY!!!
     console.log(generateContent.theFolder.folderContent)
     console.log(JSON.parse(localStorage.getItem('toDoEntry')));
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-// newEntry1.constructEntry(content)
-// newEntry2.constructEntry(content)
-// newEntry3.constructEntry(content)
-
-
-
-//most of the stuff here are for ui controls

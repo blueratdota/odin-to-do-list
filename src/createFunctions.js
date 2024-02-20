@@ -117,12 +117,25 @@ class entryFolder{
             refreshContent(_folderData)
 
             console.log(_folderData);
-
         })
-
-        //testing functionallity
         editBtn.addEventListener('click',function(e){
-            console.log(`${data.title} is the title`);
+            const overlay = document.querySelector(".overlay")
+            const editModal = document.querySelector(".edit-modal")
+            const closeEditModal = document.querySelector("#close-edit-modal")
+
+            closeEditModal.addEventListener('click',function(){
+                console.log('CLOSE EDIT MODAL');
+                document.querySelector(".edit-form").reset()
+                overlay.classList.add("hidden")
+                editModal.classList.add("hidden")
+
+            })
+            console.log('check modal page');
+            overlay.classList.remove("hidden")
+            editModal.classList.remove("hidden")
+
+            //make all entry fields equal to the data
+            
         })
 
         createButtons.appendChild(date)
