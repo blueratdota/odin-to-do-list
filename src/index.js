@@ -29,6 +29,15 @@ const dateModal = document.querySelector("#date")
 
 //EDIT MODAL
 const closeEditModal = document.querySelector("#close-edit-modal")
+const currentModalEntry = document.querySelector("#modal-current-entry")
+const editTitleModal = document.querySelector('#edit-title')
+const editDetailsModal = document.querySelector('#edit-details')
+const editDateModal = document.querySelector('#edit-date')
+const editInputRadio = document.querySelectorAll(".edit-input-radio")
+const saveEditBtn = document.querySelector('#save-edit')
+
+
+
 
 
 // ADDING STUFF
@@ -61,7 +70,6 @@ const generateContent = (function(){
     // console.log(JSON.parse(localStorage.getItem('toDoEntry'))[1])
 
     for(let i in localDataArray){
-        const _date = localDataArray[i].dueDate.split("-")
 
         const newEntry = new toDoEntry(
              localDataArray[i].title,
@@ -80,10 +88,6 @@ const generateContent = (function(){
     // theFolder.addEntry(newEntry3)
 
     theFolder.loopThroughData(theFolder.folderContent)
-
-
-    
-
     console.log(theFolder.folderContent);
 
     return{theFolder}
@@ -102,6 +106,7 @@ addEntry.addEventListener('click',function(){
 })
 closeModal.addEventListener('click',function(){
     clrclsModal()
+    //saves 
 })
 
 function clrclsModal(){
@@ -122,6 +127,7 @@ finalizeEntry.addEventListener('click',function(){
             }
         }      
     })()
+
     const inProject = !modalCurrentPage.textContent=="All"
     const newEntry = new toDoEntry(_title,_details,_date,_radio,inProject)
     if(_title!="" && _date!="" && _radio!=undefined ){
@@ -141,15 +147,15 @@ finalizeEntry.addEventListener('click',function(){
         console.log('cannot finalize');
     }
 
-
 })
 
-//create a function for save edit
-//removes the entry from the folder and the local data
-//if close is pressed, saves the original data. if save-edit, adds the edited data
+
+
 
 navAll.addEventListener("click",function(){//FOR TESING PURPOSES ONLY!!!
     console.log(generateContent.theFolder.folderContent)
     console.log(JSON.parse(localStorage.getItem('toDoEntry')));
 })
+
+export {generateContent}
 

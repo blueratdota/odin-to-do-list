@@ -241,7 +241,7 @@ main{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 8px;
+    /* padding-bottom: 8px; */
 }
 .input-priority{
     display: flex;
@@ -266,6 +266,11 @@ main{
     padding: 4px 12px;
     text-align: center;
 }
+.priority-options input[type="radio"]:checked+label{
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-width: thick;
+}
 .low-priority{
     /* border-color: green; */
     color: green;
@@ -276,6 +281,7 @@ main{
 .hi-priority{
     color: red;
 }
+
 #finalize-entry,#save-edit{
     background-color: var(--background);
     font-size: 1.1rem;
